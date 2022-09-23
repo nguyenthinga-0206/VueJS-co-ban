@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Static Template</title>
+    <title>VueJS </title>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
   </head>
   <body>
-    <h1>This is a static template, there is no bundler or bundling involved!</h1>
+    <header><h1>Header</h1></header>
+    
+    <div class='list-blog'>
+      <p>When this data changes, the view will re-render. 
+        It should be noted that properties in data are only reactive if they existed when the instance was created. 
+        That means if you add a new property</p>
+    </div>
+    
+    <div id= 'app'>
+      <!-- Template Syntax-->
+      <p>{{ title} }</p>
+      <p>{{ say('World') }}</p>
+    </div>
+    
+    <footer><h1>Footer</h1></footer>
   </body>
+  <script src= 'main.js'></script>
 </html>
