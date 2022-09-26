@@ -9,21 +9,60 @@
   </head>
   <body>
     <div id= 'app'>
+        <!-- Class and Style Bindings -->
+        <h1>First Name = {{firstName}}</h1>     
+        <p>{{about}}</p>  
+        <!-- <input v-on:keyup='handleKeyup' type='text' placeholder='Nhap first name'>   -->
+        <input v-model='firstName' type='text' placeholder='Nhap first name'>
+        <textarea v-model='about' cols='30' rows='10'></textarea>
+        <hr>
         
-     </div>
+        <!-- Binding HTML Classes -->
+        <!-- <div v-bind:class="'demo-' + textClass"></div> -->
+        <!-- <div class='demo' v-bind:class="{ active: isActive, error: isError }"></div> -->
+        <div class='demo' v-bind:class="objClass"></div>
+        <button v-on:click='changeActive'>Change Active</button>
+        <button v-on:click='changeError'>Change Error</button>
+        <hr>
+        
+        <!-- Binding Inline Styles -->
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">Test Styles Binding</div>
+
+    </div>
   </body>
   <script>
       var vueInstance = new Vue({
-        // options
         el: "#app",
         data: {
-            title: "Dien thoai OPPO A94 8GB-128GB",
+            firstName: "",
+            about: "",
+            textClass: "active",
+            
+            isActive: true,
+            isError: false,
+            
+            activeColor: 'red',
+            fontSize: 20
         },
         methods: {
-           
+        //    handleKeyup(e){
+        //        console.log(e.target.value)
+        //        this.firstName = e.target.value
+        //    },
+            changeActive(){
+                this.isActive = !this.isActive
+            },
+            changeError(){
+            this.isError = !this.isError
+        }
         },
         computed: {
-            
+            objClass() {
+                return {
+                    active: this.isActive,
+                    error: this.isError
+                }
+            }
         }
         });
   </script>
