@@ -28,5 +28,3 @@ console.log(vueInstance);
 // setTimeout(() => {
 //   vueInstance.title = "Dien thoai Oppo!";
 // }, 3000);
-Footer
-© 2022 GitHub, Inc.
