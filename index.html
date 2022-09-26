@@ -6,34 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VueJS </title>
    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
-   <script src='style.css'></script>
   </head>
   <body>
-    <header class='color-header'><h1>Header</h1></header>
-    
     <div id= 'app'>
-      <!-- Template Syntax-->
-      <!-- <p>{{ title }}</p>
-      <p>{{ say('World') }}</p> -->
-      
-      <div class='cart'>Gio Hang</div>
-      <div class='product'>
-          <div class=product-image>
-              <img src='https://images.fpt.shop/unsafe/filters:quality(90)/fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/oppo-a94-1.jpg' width=200px>
-          </div>
-          <div class=product-content>
-              <h3 class='title'>
-                  <a v-bind:href='url' v-bind:target='target'>{{title}}</a>
-              </h3>
-              <h4 class='price-color'>{{formatPrice()}}</h4>
-          </div>
-      </div>
-      <div class='description'>
-          <p>OPPO A94 với khả năng quay video đầy sáng tạo, khả năng sạc siêu nhanh và hiệu năng ấn tượng sẽ giúp cho cuộc sống của bạn thêm phần năng động, ngập tràn niềm vui.</p>
-      </div>
+        <h1>Count: {{counter}}</h1>
+        <button v-on:click="handleClick">Click me + 1</button>
+        <button v-on:click="counter += 2">Click me + 2</button>
+        <button v-on:click="handleClick5(5, $event)">Click me + 5</button>
+        
+        <form action='./server.php'  v-on:submit.prevent='handleSubmitForm'>
+            <lable>Nhap Ten</lable>
+            <input type='text' name='firstname'><br>
+            <lable>Nhap Email</lable>
+            <input type='text' name='email'><br>
+            <input type='submit' value='Dang Nhap'>
+        </form>
     </div>
     
-    <footer class='color-footer'><h1>Footer</h1></footer>
   </body>
-  <script src= 'main.js'></script>
+  <script>
+      var vueInstance = new Vue({
+        // options
+        el: "#app",
+        data: {
+            counter: 0
+        },
+        methods: {
+            handleClick(e) {
+                this.counter += 1;
+            },
+            
+             handleClick5(number, e) {
+                this.counter += number;
+            },
+            
+            handleSubmitForm(e){
+                console.log(e);
+                // e.preventDefault();
+            }
+        },
+    });
+  </script>
 </html>

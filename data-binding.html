@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS </title>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+   <style>
+     .color-header {
+        background: darkcyan;
+      }
+
+      .color-footer {
+        background: darkcyan;
+      }
+
+      .price-color {
+        color: red;
+      }
+   </style>
+  </head>
+  <body>
+    <header class='color-header'><h1>Header</h1></header>
+    
+    <div id= 'app'>
+      <div class='cart'>Gio Hang</div>
+      <div class='product'>
+          <div class=product-image>
+              <img src='https://images.fpt.shop/unsafe/filters:quality(90)/fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/oppo-a94-1.jpg' width=200px>
+          </div>
+          <div class=product-content>
+              <h3 class='title'>
+                  <a v-bind:href='url' v-bind:target='target'>{{title}}</a>
+              </h3>
+              <h4 class='price-color'>{{formatPrice()}}</h4>
+          </div>
+      </div>
+      <div class='description'>
+          <p>OPPO A94 với khả năng quay video đầy sáng tạo, khả năng sạc siêu nhanh và hiệu năng ấn tượng sẽ giúp cho cuộc sống của bạn thêm phần năng động, ngập tràn niềm vui.</p>
+      </div>
+    </div>
+    
+    <footer class='color-footer'><h1>Footer</h1></footer>
+  </body>
+  <script>
+      var vueInstance = new Vue({
+  // options
+  el: "#app",
+  data: {
+    title: "Dien thoai OPPO A94 8GB-128GB",
+    url: "https://fptshop.com.vn/dien-thoai/oppo-a94?utm_source=PMAX&utm_medium=CPC&utm_campaign=All%20-%20Brand%20PMAX%20-%20AllBrand%20Chung%20-%202022%20-%20ECM&gclid=CjwKCAjw-L-ZBhB4EiwA76YzObC3sormGhN-5iT5FE54onOcgpmTaTb-ifCcBQZ-lLAQ9TOxKWrGZBoCElAQAvD_BwE",
+    price: 100000,
+    target: "_blank",
+  },
+  methods: {
+    formatPrice() {
+      var number = this.price;
+      return Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "VND",
+      }).format(number);
+    },
+  },
+});
+  </script>
+</html>
