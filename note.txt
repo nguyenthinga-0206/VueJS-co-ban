@@ -3,3 +3,7 @@
 
 # Data Binding
 - Ràng buộc dữ liệu dùng v-bind: khi có cái này nó sẽ hiểu là một biến chứ k phải chuỗi.
+
+# Envent Handlding
+- Dung v-on xử lí sự kiện người dùng.
+- Event Modifiers
