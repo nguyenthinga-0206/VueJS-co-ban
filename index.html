@@ -9,56 +9,61 @@
   </head>
   <body>
     <div id= 'app'>
-        <p>{{ message }}</p>
-        <p>{{ message.split('').reverse().join('') }}</p>
-        <!-- computed -->
-        <!-- <p>{{ reversedMessage }}</p> -->
-        
-        <!-- methods -->
-        <p>{{reversedMessage()}}</p>
+        <!-- Class and Style Bindings -->
+        <h1>First Name = {{firstName}}</h1>     
+        <p>{{about}}</p>  
+        <!-- <input v-on:keyup='handleKeyup' type='text' placeholder='Nhap first name'>   -->
+        <input v-model='firstName' type='text' placeholder='Nhap first name'>
+        <textarea v-model='about' cols='30' rows='10'></textarea>
         <hr>
-        <button v-on:click="a++">A = A + 1</button>
-        <button v-on:click="b++">B = B + 1</button>
-        <p>Number + A = {{ addA() }}</p>
-        <p>Number + B = {{ addB() }}</p>
+        
+        <!-- Binding HTML Classes -->
+        <!-- <div v-bind:class="'demo-' + textClass"></div> -->
+        <!-- <div class='demo' v-bind:class="{ active: isActive, error: isError }"></div> -->
+        <div class='demo' v-bind:class="objClass"></div>
+        <button v-on:click='changeActive'>Change Active</button>
+        <button v-on:click='changeError'>Change Error</button>
+        <hr>
+        
+        <!-- Binding Inline Styles -->
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">Test Styles Binding</div>
+
     </div>
   </body>
   <script>
       var vueInstance = new Vue({
-        // options
         el: "#app",
         data: {
-            message: 'Hello world!',
-            a: 0,
-            b: 0,
-            number: 20,
+            firstName: "",
+            about: "",
+            textClass: "active",
+            
+            isActive: true,
+            isError: false,
+            
+            activeColor: 'red',
+            fontSize: 20
         },
         methods: {
-            reversedMessage: function () {
-                return this.message.split('').reverse().join('')
-           },
-           addA(){
-               console.log('addA run')
-               return this.a + this.number
-           },
-           addB(){
-               console.log('addB run')
-               return this.b + this.number
-           }
+        //    handleKeyup(e){
+        //        console.log(e.target.value)
+        //        this.firstName = e.target.value
+        //    },
+            changeActive(){
+                this.isActive = !this.isActive
+            },
+            changeError(){
+            this.isError = !this.isError
+        }
         },
         computed: {
-        //    reversedMessage: function () {
-        //         return this.message.split('').reverse().join('');
-        //    },
-        //  addA: function(){
-        //        console.log('addA run');
-        //        return this.a + this.number;
-        //    },
-        //    addB: function(){
-        //        console.log('addB run');
-        //        return this.b + this.number;
-        //    }
+            objClass() {
+                return {
+                    active: this.isActive,
+                    error: this.isError
+                }
+            }
         }
-    });
+        });
   </script>
 </html>
