@@ -9,42 +9,56 @@
   </head>
   <body>
     <div id= 'app'>
-        <h1>Count: {{counter}}</h1>
-        <button v-on:click="handleClick">Click me + 1</button>
-        <button v-on:click="counter += 2">Click me + 2</button>
-        <button v-on:click="handleClick5(5, $event)">Click me + 5</button>
+        <p>{{ message }}</p>
+        <p>{{ message.split('').reverse().join('') }}</p>
+        <!-- computed -->
+        <!-- <p>{{ reversedMessage }}</p> -->
         
-        <form action='./server.php'  v-on:submit.prevent='handleSubmitForm'>
-            <lable>Nhap Ten</lable>
-            <input type='text' name='firstname'><br>
-            <lable>Nhap Email</lable>
-            <input type='text' name='email'><br>
-            <input type='submit' value='Dang Nhap'>
-        </form>
+        <!-- methods -->
+        <p>{{reversedMessage()}}</p>
+        <hr>
+        <button v-on:click="a++">A = A + 1</button>
+        <button v-on:click="b++">B = B + 1</button>
+        <p>Number + A = {{ addA() }}</p>
+        <p>Number + B = {{ addB() }}</p>
     </div>
-    
   </body>
   <script>
       var vueInstance = new Vue({
         // options
         el: "#app",
         data: {
-            counter: 0
+            message: 'Hello world!',
+            a: 0,
+            b: 0,
+            number: 20,
         },
         methods: {
-            handleClick(e) {
-                this.counter += 1;
-            },
-            
-             handleClick5(number, e) {
-                this.counter += number;
-            },
-            
-            handleSubmitForm(e){
-                console.log(e);
-                // e.preventDefault();
-            }
+            reversedMessage: function () {
+                return this.message.split('').reverse().join('')
+           },
+           addA(){
+               console.log('addA run')
+               return this.a + this.number
+           },
+           addB(){
+               console.log('addB run')
+               return this.b + this.number
+           }
         },
+        computed: {
+        //    reversedMessage: function () {
+        //         return this.message.split('').reverse().join('');
+        //    },
+        //  addA: function(){
+        //        console.log('addA run');
+        //        return this.a + this.number;
+        //    },
+        //    addB: function(){
+        //        console.log('addB run');
+        //        return this.b + this.number;
+        //    }
+        }
     });
   </script>
 </html>

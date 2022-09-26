@@ -7,3 +7,8 @@
 # Envent Handlding
 - Dung v-on xử lí sự kiện người dùng.
 - Event Modifiers
+
+# Computed
+- Là thuộc tính trong cái object truyền vào đối tượng Vue. Có nhiều thuộc tính bên trong, mỗi thuộc tính là 1 function.
+- Methods: chạy bị thừa, nếu xử lý dữ liệu lớn sẽ bị chậm.
+- Computed chạy khi gọi hàm đó
