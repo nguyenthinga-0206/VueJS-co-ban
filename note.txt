@@ -1,2 +1,5 @@
 # He thong phan ung. Reactivity
 - Giúp giám sát cái thuộc tính trong data khi có sự thay đổi nó sẽ tự động render ra cho chưng ta.
+
+# Data Binding
+- Ràng buộc dữ liệu dùng v-bind: khi có cái này nó sẽ hiểu là một biến chứ k phải chuỗi.
